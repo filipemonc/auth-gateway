@@ -1,0 +1,404 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
+:root {
+    --primary-color-100: black;
+    --primary-color-90: #282828;
+    --primary-color-50: #808080;
+    --primary-color-30: #c1c1c1;
+    --primary-color-20: #d1d1d1;
+    --primary-color-10: #e1e1e1;
+    --primary-color-5: #f1f1f1;
+
+    --secondary-color-100: white;
+
+    --alert-color: #ffc36b;
+    --error-color: #f90055;
+
+    --ff-logo: "Montserrat Alternates", sans-serif;
+    --ff-primary: "Roboto", sans-serif;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html {
+    height: 100%;
+}
+
+/* Set core body defaults */
+body {
+    text-rendering: optimizeSpeed;
+    font-family: var(--ff-primary);
+    line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+    max-width: 100%;
+    display: block;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.logo,
+.logo strong {
+    font-size: 1.8rem;
+    font-family: var(--ff-logo);
+    color: var(--primary-color-100);
+    text-decoration: none;
+}
+.logo strong {
+    font-weight: 600;
+}
+
+.error-title > p {
+    font-size: 8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-title,
+.form-field,
+.form-checkbox,
+.form-link {
+    margin: 20px auto;
+}
+.form-field,
+.form-checkbox {
+    min-width: 300px;
+    max-width: 350px;
+}
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-field {
+    position: relative;
+}
+.form-title {
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+.form-title strong {
+    font-weight: 500;
+}
+.form-field.with-domain-label {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+.form-field input {
+    padding: 10px 20px;
+    height: 50px;
+    width: 100%;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color-5);
+}
+.form-field.with-domain-label input {
+    padding-right: 0;
+    border-radius: 25px 0 0 25px;
+}
+.form-field .domain-label {
+    padding: 12px 20px;
+    padding-left: 0;
+    height: 50px;
+    border-radius: 0 25px 25px 0;
+    color: var(--primary-color-50);
+    background-color: var(--primary-color-10);
+}
+.form-field
+    input:is(:valid, :focus, :disabled, :invalid:not(:placeholder-shown))
+    + label {
+    opacity: 0;
+}
+.form-field label {
+    position: absolute;
+    top: 50%;
+    color: var(--primary-color-50);
+    white-space: nowrap;
+    transform: translateY(-50%);
+    overflow: hidden;
+    pointer-events: none;
+}
+.form-field label {
+    left: 20px;
+}
+.form-field .domain-label {
+    right: 20px;
+}
+.form-field .visibility-toggle {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.form-field .visibility-toggle :is(.closed, .opened) {
+    display: grid;
+    place-items: center;
+    width: 20px;
+}
+.form-field .visibility-toggle .opened > svg {
+    max-width: 18px;
+}
+.form-field .visibility-toggle .closed,
+.form-field .visibility-toggle.showed .opened {
+    display: none;
+}
+.form-field .visibility-toggle.showed .closed {
+    display: inherit;
+}
+.form-checkbox label {
+    display: flex;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.form-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.password-validation .step {
+    display: flex;
+    margin-bottom: 5px;
+}
+:is(.password-validation, .form-checkbox) .checkmark {
+    position: relative;
+    margin-right: 10px;
+    height: 25px;
+    width: 25px;
+    background-color: var(--primary-color-10);
+}
+.password-validation .checkmark {
+    border-radius: 50%;
+}
+.password-validation .valid .checkmark {
+    background-color: var(--primary-color-100);
+}
+.form-checkbox .checkmark {
+    border-radius: 5px;
+}
+:is(.password-validation, .form-checkbox) .checkmark:after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    width: 5px;
+    height: 10px;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.password-validation .checkmark:after {
+    border-color: var(--primary-color-30);
+}
+.password-validation .valid .checkmark:after {
+    border-color: var(--secondary-color-100);
+}
+.form-checkbox .checkmark:after {
+    display: none;
+    border-color: var(--secondary-color-100);
+}
+.form-checkbox label:hover input ~ .checkmark {
+    background-color: var(--primary-color-20);
+}
+.form-checkbox label input:checked ~ .checkmark {
+    background-color: var(--primary-color-100);
+}
+.form-checkbox label input:checked ~ .checkmark:after {
+    display: block;
+}
+.form-link {
+    display: flex;
+    justify-content: end;
+}
+.form-link a {
+    font-size: 0.8rem;
+    color: var(--primary-color-100);
+}
+.form-link a:is(:hover, :focus) {
+    color: var(--primary-color-50);
+}
+.form-button {
+    margin: 0 auto;
+    padding: 0 20px;
+    display: block;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: var(--secondary-color-100);
+    background-color: var(--primary-color-100);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.form-button:is(:hover, :focus, :disabled) {
+    background-color: var(--primary-color-90);
+}
+.form-button:is(:disabled) {
+    cursor: initial;
+}
+
+@keyframes bounce {
+    10% {
+        width: 10px;
+        height: 10px;
+    }
+    15% {
+        width: 8px;
+        height: 10px;
+    }
+    25% {
+        width: 11.5px;
+        height: 6px;
+        transform: translateY(-28px);
+    }
+    38% {
+        width: 11.5px;
+        height: 10px;
+    }
+    50% {
+        transform: translateY(0px);
+    }
+}
+.loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 50px;
+    min-height: 50px;
+}
+:is(button) .loading {
+    scale: 0.7;
+}
+.loading > .dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color-100);
+    animation: bounce 1.8s infinite;
+}
+:is(button) > .loading > .dot {
+    background-color: var(--secondary-color-100);
+}
+.loading > .dot:nth-child(1) {
+    animation-delay: 0.2s;
+}
+.loading > .dot:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.loading > .dot:nth-child(3) {
+    animation-delay: 0;
+}
+
+#warning-container,
+#form-warning {
+    align-items: center;
+}
+#warning-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    color: var(--primary-color-90);
+    background-color: var(--alert-color);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+}
+#warning-container .close-button {
+    position: relative;
+    scale: 0.6;
+}
+:is(#warning-container, #form-warning) .icon {
+    display: flex;
+    margin-right: 10px;
+    width: 16px;
+}
+:is(#warning-container, #form-warning) .icon > svg {
+    width: 100%;
+}
+#form-warning {
+    display: flex;
+    margin: 0 auto;
+    max-width: 350px;
+    color: var(--error-color);
+}
+
+.close-button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.close-button:before,
+.close-button:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 14px;
+    width: 2px;
+    height: 32px;
+    background-color: var(--primary-color-100);
+}
+.close-button:before {
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.close-button:after {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
